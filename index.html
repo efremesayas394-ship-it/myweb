@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efrem Esayas-Personal Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .nav-links a.active {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .page {
+            display: none;
+            padding: 4rem 0;
+            min-height: calc(100vh - 140px);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        #home {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            text-align: center;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items:center;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            font-size: medium;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-category {
+            background-color:#d9ecec;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #3498db;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+            color:blue;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 5px;
+        }
+
+        .project-category {
+            background-color:#d6eeee;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .projects-content{
+            border-radius: 8px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Efrem Esayas</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active" data-page="home">HOME</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">ABOUT</a></li>
+                    <li><a href="#education" class="nav-link" data-page="education">EDUCATION</a></li>
+                    <li><a href="#skills" class="nav-link" data-page="skills">SKILLS</a></li>
+                    <li><a href="#projects" class="nav-link" data-page="projects">MY PROJECTS</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">CONTACT ME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="page active">
+            <div class="container">
+                <div class="hero">
+                    <h1>Welcome To My Personal Website</h1>
+                    <h2 style="font-style: oblique">Hello, I am Efrem Esayas</h2>
+                    <p>3<sup>rd</sup> Year Computer Science Student at Wolaita Sodo University</p>
+                    <p>Passionate about technology and software development</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="page">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Hello! I'm Efrem Esayas, I have completed my highschool education at Sodo comprehensive highschool.
+                           Now, I am 3rd year Computer Science student at Wolaita Sodo University.</P>
+                        <p>I have a strong passion for technology and software development, and I'm constantly seeking to expand my knowledge and skills in this ever-evolving field.
+                           Throughout my academic journey, I've developed a solid foundation in various programming languages, algorithms, data structures, and software engineering principles.</p>
+                        <p>I'm particularly interested in web development, mobile applications, and artificial intelligence.
+                           When I'm not coding or studying, I enjoy exploring new technologies, contributing to open-source projects, and collaborating with fellow students on innovative projects that solve real-world problems.</p>
+                        <p>My goal is to become a skilled software engineer who can create impactful solutions that make a difference in people's lives.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="photo_2025-11-09_08-56-50.JPG" alt="Efrem Esayas" height="450" width="280">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="page">
+            <div class="container">
+                <div class="education-category">
+                <h2 class="section-title">Education</h2>
+                <div class="education-content">
+                    <div class="education-text">
+                        <h3>My Educational Background</h3>
+                        <p>I have started my primary education at Wolaita zone Bitena town primary school and successfully completed my primary education and promoted to 9<sup>th</sup> grade.</p>
+                        <p>Then, I have continued my highschool education at Sodo comprehensive highschool at Sodo city. In 2014 E.C I have examined grade 12<sup>th</sup> entrance exam at Wolaita sodo university and I have scored remedial program entry mark.</p>
+                        <p>I have also started my remedial class at Wachemo university and after four months I've promoted to freshman education. After freshman, in my 2<sup>nd</sup> year I've joined Computer Science department. In 2018 E.C I have transferred to Wolaita sodo university.</p>
+                        <p>Now, I am 3<sup>rd</sup> year Computer Science student at Wolaita sodo university.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="page">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h2>Programming Languages</h2>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                               <ul><b><li>Java</li><li>C++</li></b></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h2>Web Development</h2>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <ul><b><li>HTML</li><li>CSS</li><li>JavaScript</li></b></ul>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="skill-category">
+                        <h2>Other Skills</h2>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <ul><b><li>Algorithm</li><li>Data Structure</li><li>Networking</li><li>Database System</li><li>Problem Solving</li><li>Team Collaboration</li><li>Project Management</li><li>Communication</li></b></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><strong>Also I have a skill in playing musical inistruments, like keyboard.</strong></p>
+                        <img src="Keyboard.JPG" alt="Efrem Esayas" height="450" width="570">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="page">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="projects-content">
+                    <div class="project-category">
+                       <p><strong>I have created a simple calculator by using Java Graphical User Interface.</strong></p>
+                       <img src="photo_2025-11-10_02-34-31.JPG" alt="Simple Calculator" height="400" width="380"><br>
+                       <a href="SimpleCalculator.java" download>to get code, click here</a>
+                    </div>
+                    <br>
+                    <div class="project-category">
+                       <p><strong>Hospital Network System</strong></p>
+                       <img src="Screenshot_2025-11-10_080056.PNG" alt="Hospital Network" height="380" width="500"><br>
+                       <a href="HospitalNetworkByCisco.pkt" download>Download HospitalNetworkProject</a>
+                    </div>
+                    <br>
+                    <div class="project-category">
+                       <p><strong>I have created friends satisfaction survey form within the google form. Click the link below to fill the form.</strong></p>
+                       <img src="Screenshot 2025-11-10 085314.PNG" alt="Google form" height="400" width="400"><br>
+                       <a href="https://forms.gle/ZiYuCE8tJAZVQ9Lr7">https://forms.gle/ZiYuCE8tJAZVQ9Lr7</a>
+                    </div>
+                    <br>
+                    <div class="project-category">
+                       <p><strong>Also I have a telegram channel for begginer programmers. Please, subscribe my telegram channel</strong></p>
+                       <a href="https://t.me/programmingforbegginers">https://t.me/programmingforbegginers</a>
+                    </div>
+                    <br>
+                    <div class="project-category">
+                       <p><strong>Please, follow my tiktok account</strong></p>
+                       <a href="https://vm.tiktok.com/ZMHc3eewPdV2y-d7RNA/">https://vm.tiktok.com/ZMHc3eewPdV2y-d7RNA/</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <div class="container">
+                <h2 class="section-title">Contact Me</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>I'm always open to discussing new opportunities, collaborations, or just having a friendly chat about technology and software development.</p>
+                        <p>Email: <a href="mailto:efremesayas394@gmail.com">efremesayas394@gmail.com</a></p>
+                        <p>Facebook: <a href="https://www.facebook.com/efy.man.1">facebook</a></p>
+                        <p>Instagram: <a href="https://www.instagram.com/efa_esayas?igsh=OXFja21pbm9wOWt6">instagram</a></p>
+                        <p>Phone: +251963825611</p>
+                        <p>Location: Wolaita Sodo, Ethiopia</p>
+                        <a href="#about" class="btn nav-link" data-page="about">Learn More</a>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send Me a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Efrem Esayas || All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+
+            function switchPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                document.getElementById(pageId).classList.add('active');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    switchPage(pageId);
+
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
